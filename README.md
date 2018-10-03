@@ -23,3 +23,7 @@ Open command line or Bash
           
       cd src/components/   press enter
       then type npm start   and sweet your app is up and running on Localhost :-)
+      
+      
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/1584604/46384667-5becdd80-c685-11e8-9f8d-8ffb0d34ac0f.gif)
+

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { firebase } from '../firebase';
 //we wont need to import the logo since we will not need it in this case
 //import the css so you keep updating the style of all html component elements
 import './App.css';
@@ -34,10 +35,36 @@ import SignOutPage from './SignOut';
 import SignUpPage from './SignUp';
 //see the div below the router it coild be threated as an wrapper
 //you can add css to it if you like 
-const App = () => 
+class App extends Component { 
+  constructor(props)
+  {
+    super(props)
+
+    this.state = {
+      authUser: null,
+    };
+  }
+
+
+//this function is offered by firebase to handle authentication
+componentDidMount(){
+  firebase.auth.onAuthStateChanged(authUser => {
+     authUser
+       ? this.setState({authUser})
+       : this.setState({authUser: null});
+  });
+}
+
+
+
+
+
+  //render method
+  render(){
+       return (
 <Router>
    <div>
-  <Navigation/>
+  <Navigation authUser={this.state.authUser}/>
   <hr/>
 
   <Route exact path={routes.LANDING}
@@ -66,6 +93,9 @@ const App = () =>
           />
   </div>
 </Router>
+);
+}
+}
 
 export default App;
 

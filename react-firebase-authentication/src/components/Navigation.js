@@ -14,16 +14,36 @@ import { Link } from  'react-router-dom';
 //remember if you are trying to add some nice mobile compatible css you can easy do it in react is not a big deal 
 import * as routes from '../constants/routes';
 
-const Navigation = () => 
+const Navigation = ({ authUser }) =>
+  <div>
+    { authUser
+        ? <NavigationAuthenticated />
+        : <NavigationUnAuthenticated />
+    }
+  </div>
+
+const NavigationUnAuthenticated  = () => 
   <div className="App-header">
-    <ul className="link-header">
+    <ul className="link-header-topRight">
       <li><Link className="Links"  to={routes.SIGN_IN}>Sign In</Link></li>
-      <li><Link className="Links"  to={routes.SIGN_UP}>Sign Up</Link></li>
+      <li><Link className="Links"  to={routes.SIGN_UP}>Sign Up</Link></li> 
+    </ul>
+    <ul className="link-header">
       <li><Link className="Links"  to={routes.LANDING}>Landing</Link></li>
       <li><Link className="Links"  to={routes.HOME}>Home</Link></li>
       <li><Link className="Links"  to={routes.ACCOUNT}>Account</Link></li>
-      <li><Link className="Links"  to={routes.SIGN_OUT}>Sign Out</Link></li>
+    </ul>
+  </div>
 
+  const NavigationAuthenticated = () => 
+  <div className="App-header">
+    <ul className="link-header-topRight">    
+      <li><Link className="Links"  to={routes.SIGN_OUT}>Sign Out</Link></li>
+    </ul>
+    <ul className="link-header">
+      <li><Link className="Links"  to={routes.LANDING}>Landing</Link></li>
+      <li><Link className="Links"  to={routes.HOME}>Home</Link></li>
+      <li><Link className="Links"  to={routes.ACCOUNT}>Account</Link></li>
     </ul>
   </div>
 

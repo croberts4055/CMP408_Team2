@@ -36,7 +36,7 @@
 	      });
 
 	    event.preventDefault();
-	  }//close the sign out 
+	  }//close the sign out function
 
 
 		render()
@@ -51,6 +51,7 @@
 	       	);
 		}
 	};
+	
 	export default withRouter(SignOutPage);
 
 	export {

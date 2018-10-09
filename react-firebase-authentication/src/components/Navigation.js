@@ -18,9 +18,11 @@ const Navigation = () =>
   <div className="App-header">
     <ul className="link-header">
       <li><Link className="Links"  to={routes.SIGN_IN}>Sign In</Link></li>
+      <li><Link className="Links"  to={routes.SIGN_UP}>Sign Up</Link></li>
       <li><Link className="Links"  to={routes.LANDING}>Landing</Link></li>
       <li><Link className="Links"  to={routes.HOME}>Home</Link></li>
       <li><Link className="Links"  to={routes.ACCOUNT}>Account</Link></li>
+      <li><Link className="Links"  to={routes.SIGN_OUT}>Sign Out</Link></li>
 
     </ul>
   </div>

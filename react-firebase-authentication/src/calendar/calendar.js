@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  gapi from 'react-google-calendar-api';
 
 import moment from "moment";
 import { GOOGLE_API_KEY, CALENDAR_ID } from './config.js';
@@ -36,7 +37,7 @@ export default class Calendar extends Component{
           apiKey: GOOGLE_API_KEY
         })
         .then(function() {
-          return window.gapi.client.request({
+          return gapi.client.request({
             path: `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?maxResults=11&orderBy=updated&timeMin=${moment().toISOString()}&timeMax=${moment()
               .endOf("day")
               .toISOString()}`
@@ -75,7 +76,7 @@ export default class Calendar extends Component{
           }
         );
     }
-    window.gapi.load("client", start);
+    gapi.load("client", start);
   }
 render() {
     const { time, events } = this.state;

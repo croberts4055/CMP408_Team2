@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "380674518377",
-    "firebase_url": "https://androidfinalproject-ab4d0.firebaseio.com",
-    "project_id": "androidfinalproject-ab4d0",
-    "storage_bucket": "androidfinalproject-ab4d0.appspot.com"
+    "project_number": "369312429883",
+    "firebase_url": "https://makeacase-c1d5a.firebaseio.com",
+    "project_id": "makeacase-c1d5a",
+    "storage_bucket": "makeacase-c1d5a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:380674518377:android:690e19bf1e6c753e",
+        "mobilesdk_app_id": "1:369312429883:android:690e19bf1e6c753e",
         "android_client_info": {
           "package_name": "com.example.abrahamlaragranados.team3proj"
         }
       },
       "oauth_client": [
         {
-          "client_id": "380674518377-ffck6g3tc6r9rnvu0orsqf3dj2hepf7t.apps.googleusercontent.com",
+          "client_id": "369312429883-tf8uramkjtehdssbu9u32rpo89lqeko0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abrahamlaragranados.team3proj",
+            "certificate_hash": "f8a5fcc887d1b41e0097f414540e605b69c94085"
+          }
+        },
+        {
+          "client_id": "369312429883-af1dpj2mdtl3dps01uro6df05cf4mmjf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVwHMjpfr_eUNaF3V6j10eBekkoTws9to"
+          "current_key": "AIzaSyAs2xg1HbP969zGOsGZuY8nLQxo3PnaOds"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369312429883-af1dpj2mdtl3dps01uro6df05cf4mmjf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

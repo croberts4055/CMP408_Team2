@@ -1,4 +1,4 @@
-package com.example.abrahamlaragranados.team3proj;
+/*package com.example.abrahamlaragranados.team3proj;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -191,4 +191,4 @@ public class MPDetailsActivity extends AppCompatActivity {
 
     }
 
-}
+}*/

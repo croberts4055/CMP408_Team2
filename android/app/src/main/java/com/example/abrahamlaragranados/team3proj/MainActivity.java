@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -38,16 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void project1(View view) {
-        starActivityFor("TipCalculator");
-    }
-    public void project2(View view) {
-        starActivityFor("TeamScoreCounter");
-    }
-
-    public void project3(View view) {
-        starActivityFor("FoodieApp");
-    }
 
     private void starActivityFor(final String project) {
         database.getReference().child("Projects").child(project).addValueEventListener(new ValueEventListener() {
@@ -69,11 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(ArrayList<String> values, String project) {
-        Intent intent = new Intent(this, MPDetailsActivity.class);
-        intent.putExtra("videoURL", values.get(1));
-        intent.putExtra("projectName", project);
-        intent.putExtra("projectDesc", values.get(0));
-        startActivity(intent);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.abrahamlaragranados.team3proj">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -20,8 +21,6 @@
             android:name=".LoginActivity"
             android:noHistory="true" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MPDetailsActivity" />
-        <activity android:name=".MPStudentLinks"></activity>
     </application>
 
 </manifest>

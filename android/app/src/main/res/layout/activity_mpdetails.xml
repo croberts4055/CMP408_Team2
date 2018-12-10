@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MPDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/MPtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/miniprojectname"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <VideoView
+            android:id="@+id/MPclassvid"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+
+
+            />
+
+        <TextView
+            android:id="@+id/MPdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MPdetails"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/MPpostlink"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_buttonlogin"
+            android:layout_marginBottom="4dp"
+            android:baselineAligned="false"
+            android:onClick="onCreateDialogLink"
+            android:text="Post Project Link" />
+
+        <Button
+            android:id="@+id/MPdatabase"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_buttonsignup"
+            android:text="View Students Links for projects"
+            android:textColorLink="@android:color/holo_red_dark" />
+
+    </LinearLayout>
+
+</ScrollView>

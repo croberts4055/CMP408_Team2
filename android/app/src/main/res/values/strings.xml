@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Team3Proj</string>
+    <string name="miniprojectname">Miniprojectname</string>
+    <string name="action_settings">Signup</string>
+    <string name="a_settings">signup</string>
+    <string name="Si_settings">Logout</string>
+    <string name="dialog_message">Do you would like to add your project?</string>
+    <string name="dialog_title">Project Link</string>
+    <string name="right">Yes</string>
+</resources>

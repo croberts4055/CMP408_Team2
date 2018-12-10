@@ -157,7 +157,7 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void takeToLogin(View view) {
+    public void takeToLogin(View view) {
         takeUserToActivity(LoginActivity.class);
     }
 }

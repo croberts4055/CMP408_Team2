@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Team3Proj</string>
+    <string name="app_name">MakeACase</string>
     <string name="miniprojectname">Miniprojectname</string>
     <string name="action_settings">Signup</string>
     <string name="a_settings">signup</string>
@@ -8,5 +8,22 @@
     <string name="dialog_title">Project Link</string>
     <string name="right">Yes</string>
 
+    <array name="user_roles">
+        <item>Secretary</item>
+        <item>Lawyer</item>
+        <item>Clerk</item>
+        <item>Ceo</item>
+        <item>Owner</item>
+    </array>
+  <string name="Secretary">Secretary</string>
+  <string name="Lawyer">Lawyer</string>
+  <string name="Ceo">Ceo</string>
+  <string name="Clerk">Clerk</string>
+  <string name="Owner">Owner</string>
 
+    <string name="secretarycode">MakeACaseSecretary2018</string>
+    <string name="lawyercode">MakeACaseLawyer2018</string>
+    <string name="clerkcode">MakeACaseClerk2018</string>
+    <string name="ceocode">MakeACaseCeo2018</string>
+    <string name="ownercode">MakeACaseOwner2018</string>
 </resources>

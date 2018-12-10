@@ -1,13 +1,13 @@
 package com.example.abrahamlaragranados.team3proj;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,7 +25,8 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase database;
 
     private TextView message;
-    private EditText name, email, password, confPassword;
+    private EditText name, email, password, confPassword, confirmation;
+    private Spinner spinner;
 
     @Override
     protected void onStart() {
@@ -48,6 +49,12 @@ public class SignUpActivity extends AppCompatActivity {
         email           = (EditText) findViewById(R.id.email);
         password        = (EditText) findViewById(R.id.password);
         confPassword    = (EditText) findViewById(R.id.confPassword);
+        confirmation    = findViewById(R.id.confirmation);
+        spinner        = findViewById(R.id.user_role);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.user_roles, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
     }
 
     public void signup(View view) {
@@ -66,25 +73,60 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
+        if(spinner.getSelectedItem().toString().equals(getResources().getString(R.string.Secretary))){
+            //lets confirm the sign up for the secretary
+            if(confirmation.getText().toString().equals(getResources().getString(R.string.secretarycode))){
+                message.setText("Keygen Confim for Secretary");
+                authenticateUser("Secretary");
+            }
+        }else if(spinner.getSelectedItem().toString().equals(getResources().getString(R.string.Clerk))){
+            if(confirmation.getText().toString().equals(getResources().getString(R.string.clerkcode))){
+                message.setText("Keygen Confim for Clerk");
+                authenticateUser("Clerk");
+            }
+        }else if(spinner.getSelectedItem().toString().equals(getResources().getString(R.string.Owner))){
+            if(confirmation.getText().toString().equals(getResources().getString(R.string.ownercode))){
+                message.setText("Keygen Confim for Owner");
+                authenticateUser("Owner");
+            }
+        }else if(spinner.getSelectedItem().toString().equals(getResources().getString(R.string.Ceo))){
+            if(confirmation.getText().toString().equals(getResources().getString(R.string.ceocode))){
+                message.setText("Keygen Confim for Ceo");
+                authenticateUser("Ceo");
+            }
+        }else if(spinner.getSelectedItem().toString().equals(getResources().getString(R.string.Lawyer))){
+            if(confirmation.getText().toString().equals(getResources().getString(R.string.lawyercode))){
+                message.setText("Keygen Confim for Lawyer");
+                authenticateUser("Lawyer");
+            }
+        }
+
+    }
+
+
+    public void authenticateUser(final String role)
+    {
         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-            database.getReference().child("Users").child(authResult.getUser().getUid())
-                    .setValue(new User(email.getText().toString(), name.getText().toString()))
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            message.setText("Successfully registered.");
-                            mAuth.signOut();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            message.setText(e.getMessage());
-                        }
-                    });
+                database.getReference().child("Users").child(authResult.getUser().getUid())
+                        .setValue(new User(email.getText().toString(), name.getText().toString(), role))
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                message.setText("Successfully registered.");
+                                mAuth.signOut();
+                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                message.setText(e.getMessage());
+                            }
+                        });
 
             }
         }).addOnFailureListener(new OnFailureListener() {

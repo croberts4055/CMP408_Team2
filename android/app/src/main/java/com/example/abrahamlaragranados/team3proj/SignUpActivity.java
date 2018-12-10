@@ -6,9 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +31,10 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView message;
     private EditText name, email, password, confPassword;
 
+    private Spinner Myspinner;
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -43,12 +51,20 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        Myspinner       =  (Spinner) findViewById(R.id.Myspinner);
+
         message         = (TextView) findViewById(R.id.message);
         name            = (EditText) findViewById(R.id.name);
         email           = (EditText) findViewById(R.id.email);
         password        = (EditText) findViewById(R.id.password);
         confPassword    = (EditText) findViewById(R.id.confPassword);
     }
+
+
+
+
+
+
 
     public void signup(View view) {
         if (inputsAreEmpty()) {
@@ -118,4 +134,8 @@ public class SignUpActivity extends AppCompatActivity {
     protected void takeToLogin(View view) {
         takeUserToActivity(LoginActivity.class);
     }
+
+
 }
+
+

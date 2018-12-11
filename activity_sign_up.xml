@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".SignUpActivity">
+
+
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:text="Fill in all fields"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:drawableLeft="@drawable/username"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/email"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/transparent" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/password"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/transparent" />
+
+    <EditText
+        android:id="@+id/confPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/password"
+        android:ems="10"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/transparent" />
+
+    <Spinner
+        android:id="@+id/user_role"
+        android:drawableLeft="@drawable/email"
+        android:hint="User Role"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/transparent">
+
+    </Spinner>
+    <EditText
+        android:id="@+id/confirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/email"
+        android:ems="10"
+        android:hint="Confirmation code"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+        android:textColorLink="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:onClick="signup"
+        android:background="@drawable/rounded_buttonsignup"
+        android:text="SIGN UP"
+        android:clickable="true"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/takeToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="90dp"
+        android:background="#00000000"
+        android:onClick="takeToLogin"
+        android:padding="5dp"
+        android:text="login"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        tools:ignore="OnClick" />
+
+</LinearLayout>
+</ScrollView>

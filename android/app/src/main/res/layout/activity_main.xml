@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -94,13 +95,20 @@
                 android:textSize="18sp"
                 android:textColor="@color/colorAccent"
                 android:layout_height="match_parent" />
-            <EditText
+            <Spinner
                 android:id="@+id/LawyerName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </EditText>
+            </Spinner>
         </LinearLayout>
+        <TextView
+            android:id="@+id/date_picked"
+            android:layout_width="200dp"
+            android:text="Picked Date :"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            />
         <Button
             android:id="@+id/searchDataBase"
             android:layout_width="wrap_content"
@@ -111,6 +119,7 @@
                android:layout_height="10dp"></View>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/result_cases"
             android:layout_width="match_parent"
             android:minHeight="400dp"
             android:layout_height="match_parent">
@@ -119,5 +128,18 @@
     </LinearLayout>
 
 </ScrollView>
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/new_case"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:contentDescription="New Case"
+        android:src="@drawable/email"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:elevation="@dimen/fab_elevation"
+        android:stateListAnimator="@anim/fab_animation"/>
 
-</android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

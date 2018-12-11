@@ -2,6 +2,8 @@ package com.example.abrahamlaragranados.team3proj;
 
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 /**
  * Created by luism .
  */
 
-public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
+public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView>  implements  NotesAdapter.GridItemClickListener{
 
     public static final String TAG = CaseAdapter.class.getName();
 
@@ -28,6 +35,11 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
     private int mNumberItems;
     public ArrayList<Cases> cases;
     public User current_logged_user;
+    private FirebaseDatabase database;
+
+    @Override
+    public void onAppointmentClickListener(int clickedItemGrid, View v) {
+    }
 
 
     public interface GridItemClickListener{
@@ -41,6 +53,8 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
         this.mNumberItems = itemSize;
         this.cases = job;
         this.listener = listener;
+
+        database = FirebaseDatabase.getInstance();
         viewHolderCount = 0;
     }
     @Override
@@ -89,6 +103,7 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
         public Button directLocation;
         public Button deleteCase;
         public Button Note;
+        public RecyclerView  notesRecyclerView;
 
         //this is the button for the results
         private Context context;
@@ -98,7 +113,7 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
             super(itemView);
             this.context = context;
 
-            update =  itemView.findViewById(R.id.Delete);
+            update =  itemView.findViewById(R.id.updateCase);
             directLocation =  itemView.findViewById(R.id.DirectLocation);
             deleteCase =  itemView.findViewById(R.id.Delete);
 
@@ -110,6 +125,11 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
             date =  itemView.findViewById(R.id.date);
             Lawyer =  itemView.findViewById(R.id.Lawyer);
             Note = itemView.findViewById(R.id.Note);
+            notesRecyclerView  = itemView.findViewById(R.id.result_notes);
+            LinearLayoutManager layoutManager
+                    = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+            notesRecyclerView.setLayoutManager(layoutManager);
+
 
 
             itemView.setOnClickListener(this);
@@ -122,14 +142,17 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
         void bind(int listIndex) {
 
             //add listener to the buttons
-            PostClickListener listener = new PostClickListener(context,current_view);
+            PostClickListener listener = new PostClickListener(context,current_view,current_logged_user);
             Cases CurrentCase =  cases.get(listIndex);
             update.setTag(CurrentCase.getCase_id());
             update.setOnClickListener(listener);
+            Note.setTag(CurrentCase.getCase_id());
+            Note.setOnClickListener(listener);
             directLocation.setTag(CurrentCase.getCase_location());
             directLocation.setOnClickListener(listener);
             deleteCase.setTag(CurrentCase.getCase_id());
             deleteCase.setOnClickListener(listener);
+            notesRecyclerView.setTag("Recycler"+CurrentCase.getCase_id());
 
             if(current_logged_user.getUserRole().equals(context.getResources().getString(R.string.Secretary))
                     || current_logged_user.getUserRole().equals(context.getResources().getString(R.string.Clerk))
@@ -153,7 +176,42 @@ public class CaseAdapter extends RecyclerView.Adapter<CaseAdapter.PostView> {
             caseType.setText("Case Type: "+CurrentCase.getCase_type());
             status.setText("Status : "+CurrentCase.getCase_status());
 
+            fetchUserNoteForCurrentCase(CurrentCase.getCase_id());
 
+            //now lets hide some buttons for specific users
+            if(current_logged_user.getUserRole().equals("Lawyer")
+                    || current_logged_user.getUserRole().equals("Clerk")){
+                deleteCase.setVisibility(View.INVISIBLE);
+                update.setVisibility(View.INVISIBLE);
+            }
+        }
+
+
+        public void fetchUserNoteForCurrentCase(final String id)
+        {
+            database.getReference().child("Notes").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ArrayList<Notes> values = new ArrayList<>();
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        Notes note =  postSnapshot.getValue(Notes.class);
+                        if(note.getCase_id().equals(id)){
+                            values.add(note);
+                        }
+                    }
+
+                   if(values.size()>0)
+                   {
+                       NotesAdapter adapter = new NotesAdapter(values,CaseAdapter.this);
+                       notesRecyclerView.setAdapter(adapter);
+                   }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
         @Override

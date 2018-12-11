@@ -15,6 +15,15 @@
         <item>Ceo</item>
         <item>Owner</item>
     </array>
+    <array name="case_status">
+        <item>Win</item>
+        <item>Loss</item>
+        <item>OnProgress</item>
+    </array>
+    <array name="law_types">
+        <item>Litigation</item>
+        <item>Injury</item>
+    </array>
   <string name="Secretary">Secretary</string>
   <string name="Lawyer">Lawyer</string>
   <string name="Ceo">Ceo</string>

@@ -15,8 +15,9 @@ public class Cases implements Parcelable {
     public String case_court;
     public String case_status;
 
+    public Cases(){}
     public Cases(String case_id, String case_lawyer, String case_clerk,String case_location, String case_type,
-                 Double case_budget, String case_judge, String case_date, String case_court,String case_status){
+                 double case_budget, String case_judge, String case_date, String case_court,String case_status){
         this.case_id =  case_id;
         this.case_Lawyer= case_lawyer;
         this.case_clerk = case_clerk;

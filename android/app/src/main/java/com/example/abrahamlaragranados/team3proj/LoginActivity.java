@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
      public void startMainActivityContent(String authenticateEmail){
-      myDataBase.getReference().child("profiles")
+      myDataBase.getReference().child("Users")
               .addListenerForSingleValueEvent(new ValueEventListener() {
                   @Override
                   public void onDataChange(DataSnapshot dataSnapshot) {

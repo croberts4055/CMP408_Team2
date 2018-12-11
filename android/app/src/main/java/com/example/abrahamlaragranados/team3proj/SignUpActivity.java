@@ -14,7 +14,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -152,9 +155,32 @@ public class SignUpActivity extends AppCompatActivity {
         return !(password.getText().toString().equals(confPassword.getText().toString()));
     }
 
-    private void takeUserToActivity(Class activity) {
-        Intent intent = new Intent(this, activity);
-        startActivity(intent);
+    private void takeUserToActivity(final Class activity) {
+        database.getReference().child("Users")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            User user = snapshot.getValue(User.class);
+                            if(user.getEmail().equals(mAuth.getCurrentUser().getEmail())){
+                                Bundle extra = new Bundle();
+                                extra.putParcelable("CurrentUser",user);
+                                Intent intent = new Intent(SignUpActivity.this, activity);
+                                intent.putExtras(extra);
+                                startActivity(intent);
+
+                                break;
+                            }
+                        }
+
+                    }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     public void takeToLogin(View view) {

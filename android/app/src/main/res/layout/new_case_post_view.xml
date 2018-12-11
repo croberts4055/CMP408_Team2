@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <DatePicker
+            android:id="@+id/date_picked"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_gravity="center">
+        </DatePicker>
+        <TextView
+            android:id="@+id/date_results"
+            android:layout_width="200dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Picked Date :"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Case type : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/CaseType"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Lawyer : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/Lawyer"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Clerk : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/Clerk"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Law infraction $: "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/Lawsuit"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Location : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/Location"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Judge : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/Judge"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Court name : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/Court_name"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Case status : "
+                android:textSize="20sp"
+                android:layout_width="200dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/CaseStatus"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </LinearLayout>
+      <!--<Button
+          android:id="@+id/post_case"
+          android:layout_width="200dp"
+          android:layout_height="wrap_content"
+          android:text="post"
+          android:layout_gravity="end"/>-->
+    </LinearLayout>
+    </ScrollView>
+</FrameLayout>

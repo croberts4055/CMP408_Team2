@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
+    private User authenticatedUser;
 
     @Override
     protected void onStart() {
@@ -35,8 +36,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(savedInstanceState!=null)
+        {
+            if(savedInstanceState.getParcelable("CurrentUser")!=null){
+                authenticatedUser  =  savedInstanceState.getParcelable("CurrentUser");
+            }
+        }
+
+        //pupulate view base on authenticated user roles
+        PopulateMainActivityContentView();
+
     }
 
+
+    public void PopulateMainActivityContentView(){
+        if(authenticatedUser!=null){
+
+        }
+    }
 
     private void starActivityFor(final String project) {
         database.getReference().child("Projects").child(project).addValueEventListener(new ValueEventListener() {

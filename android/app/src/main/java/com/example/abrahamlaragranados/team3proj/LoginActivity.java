@@ -16,11 +16,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase myDataBase;
 
     private EditText email_text, password_tetx ;
     private Button login_button;
@@ -34,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        myDataBase = FirebaseDatabase.getInstance();
 
         if (mAuth.getCurrentUser() == null)
             Log.d("ERROR", "THERE IS NO CURRENT USER!!!!");
@@ -67,9 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(),"Loading...",Toast.LENGTH_SHORT).show();
+                   startMainActivityContent(user.getEmail());
 
                 if(!task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"Username/email or password is incorrect",Toast.LENGTH_LONG).show();
@@ -89,6 +93,35 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+     public void startMainActivityContent(String authenticateEmail){
+      myDataBase.getReference().child("profiles")
+              .addListenerForSingleValueEvent(new ValueEventListener() {
+                  @Override
+                  public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            User user = snapshot.getValue(User.class);
+                            if(user.getEmail().equals(mAuth.getCurrentUser().getEmail())){
+                                Bundle extra = new Bundle();
+                                extra.putParcelable("CurrentUser",user);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtras(extra);
+                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(),"Loading...",Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        }
+
+                  }
+
+
+                  @Override
+                  public void onCancelled(DatabaseError databaseError) {
+
+                  }
+              });
+
+     }
      public boolean fillOutLoginAreEmpty(){
         return email_text.getText().toString().isEmpty() | login_button.getText().toString().isEmpty();
      }

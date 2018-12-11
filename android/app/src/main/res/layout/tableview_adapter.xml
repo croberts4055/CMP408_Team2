@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="150dp"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Date: "/>
+            <TextView
+                android:id="@+id/caseValue"
+                android:layout_width="match_parent"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Case Value: "/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/caseType"
+                android:layout_width="150dp"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Case Type: "/>
+            <TextView
+                android:id="@+id/caseJudge"
+                android:layout_width="match_parent"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Judge: "/>
+        </LinearLayout>
+            <TextView
+                android:id="@+id/Location"
+                android:layout_width="match_parent"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Location: "/>
+           <TextView
+            android:id="@+id/Lawyer"
+            android:layout_width="match_parent"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"
+            android:hint="Lawyer: "/>
+            <TextView
+                android:id="@+id/Status"
+                android:layout_width="200dp"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:hint="Status: "/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/updateCase"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Update"/>
+            <Button
+                android:id="@+id/DirectLocation"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Loc"/>
+            <Button
+                android:id="@+id/Note"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Note"/>
+            <Button
+                android:id="@+id/Delete"
+                android:layout_width="wrap_content"
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:hint="Delete"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

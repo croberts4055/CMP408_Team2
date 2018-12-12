@@ -142,8 +142,21 @@
                             <li><a class="active" href="contact.html">Contact</a>
                             </li>
                             <li>
-                                    <a href="login.html">Login</a>
-                            </li>
+                                    <a id='login' href="login.html" onclick="signout();">
+                                    
+                                            <script>function signout(){
+                                                if(document.getElementById('login').textContent == 'Logout'){
+                                                firebase.auth().signOut();
+                                                alert("You've been logged out. Returning to home page.");
+                                                window.location='index.html';
+                                                }
+                                                else if(document.getElementById('login').textContent == 'Login'){
+                                                window.location = 'login.html';
+                                                }
+
+                                            }
+                                            </script>login</a>
+                                </li>
                         </ul>
                         <!-- End Navigation List -->
                     </div>
